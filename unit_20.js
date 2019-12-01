@@ -2,19 +2,22 @@
 // Task 1 ============================================
 /* Дан input .i-1. Напишите функцию t1, которая выводит в .out-1 символ и возвращает его. Во всех последующих задачах - работаем с латиницей и цифрами.*/
 
-function t1() {
+function t1(e) {
+    document.querySelector('.out-1').innerHTML += e.key;
+    return e.key;
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-1').onkeypress = t1;
 
 // Task 2 ============================================
 /*  Дан input .i-2. Напишите функцию t2, которая выводит в .out-2 код символа и возвращает его. */
 
-function t2() {
-
+function t2(e) {
+    document.querySelector('.out-2').innerHTML += e.keyCode + '&nbsp';
+    return e.keyCode;
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-2').onkeypress = t2;
 
 
 // Task 3 ============================================
@@ -22,63 +25,94 @@ function t2() {
 
 let w3 = 75;
 
-function t3() {
-
+function t3(e) {
+    if (e.keyCode >= 48 && e.keyCode <= 57) {
+        document.querySelector('.out-3').innerHTML = false;
+    }
+    else if (e.keyCode >= 97 && e.keyCode <= 122 || e.keyCode >= 65 && e.keyCode <= 90) {
+        document.querySelector('.out-3').innerHTML = true;
+    }
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-3').onkeypress = t3;
 
 
 // Task 4 ============================================
 /*  Дан input .i-4. Напишите функцию t4, которая выводит в .out-4 только символы в нижнем регистре. Т.е. ввели ab4Bci в out получаем ab4bci. */
 
-function t4() {
-
+function t4(event) {
+    if (event.keyCode >= 97 && event.keyCode <= 122 || event.keyCode >= 65 && event.keyCode <= 90) {
+        document.querySelector('.out-4').innerHTML += event.key.toLowerCase();
+    }
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-4').onkeypress = t4;
 
 // Task 5 ============================================
 /*  Дан input .i-5. Напишите функцию t5, которая выводит в .out-5 все вводимые символы в верхнем регистре. Т.е. пользователь ввел AbCd и функция выведет ABCD. */
 
-function t5() {
-
+function t5(e) {
+    if (e.keyCode >= 97 && e.keyCode <= 122 || e.keyCode >= 65 && e.keyCode <= 90) {
+        document.querySelector('.out-5').innerHTML += event.key.toLocaleUpperCase();
+    }
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-5').onkeypress = t5;
 
 // Task 6 ============================================
 /*  Дан input .i-6. Напишите функцию t6, которая выводит в .i-6 только символы в нижнем регистре.  */
 
-function t6() {
-
+function t6(event) {
+    event.preventDefault();
+    document.querySelector('.i-6').value += event.key.toLowerCase();
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-6').onkeypress = t6;
 
 
 // Task 7 ============================================
 /*  Дан input .i-7. Напишите функцию t7, которая выводит в .out-7 случаный символ из массива a7 при каждом вводе символа. */
 
-function t7() {
-    const a7 = [];
-
+const a7 = [];
+function t7(e) {
+    a7.push(e.key);
+    console.log(a7);
+    document.querySelector('.out-7').innerHTML += a7[Math.floor(Math.random() * Math.floor(a7.length))];
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-7').onkeypress = t7;
 
 // Task 8 ============================================
 /*  Дан input .i-8. Напишите функцию t8, которая выводит в .out-8 вводимый в input текст, но заменяет i на 1, o на 0, l на 7. */
 
-function t8() {
+let out_8 = '';
+function t8(event) {
+    const a8 = {
+        'i': 1,
+        'o': 0,
+        'l': 7
+    }
+
+    for (let key8 in a8) {
+        if (key8 == event.key) {
+            out_8 += a8[key8];
+
+        }
+        else {
+            out_8 += event.key;
+
+        }
+
+    }
+    document.querySelector('.out-8').innerHTML = out_8;;
 
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-8').onkeypress = t8;
 
 
 // Task 9 ============================================
-/* Дан input .i-9. Напишите функцию t8, выводит в .out-9 количество нажатых клавиш стрелка вниз. */
+/* Дан input .i-9. Напишите функцию t9, выводит в .out-9 количество нажатых клавиш стрелка вниз. */
 
 function t9() {
 
