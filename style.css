@@ -13,12 +13,80 @@ section {
     height: 75px;
     margin: 25px;
     border: 2px solid #333;
+
 }
 
-.active {
+.active, .activeCapsLock {
     background: orange;
 }
 
 .hide {
     display: none;
+}
+
+.line {
+    display: block;
+    clear: both;
+}
+
+.keyboard {
+    width: 846px;
+    border: 1px solid #444;
+    position: relative;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.key {
+    width: 50px;
+    height: 50px;
+    margin: 3px;
+    padding: 4px;
+    float: left;
+    border: 1px solid #333;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 600;
+}
+.clearfix {
+    width: 100%;
+    clear: both;
+}
+
+.tab, .slash {
+    width: 75px;
+}
+
+.backspace {
+    width: 100px;
+}
+
+.lshift {
+    width: 130px;
+}
+
+.capslock {
+    width: 100px;
+}
+
+.inter {
+    width: 106px;
+}
+
+.rshift {
+    width: 132px;
+}
+
+.space {
+    width: 350px;
+}
+
+.lctrl, .rctrl, .win, .lalt, .ralt, .fn, .contextmenu {
+    width: 62.1px;
+}
+
+.win, .contextmenu {
+    padding: 9px;
 }

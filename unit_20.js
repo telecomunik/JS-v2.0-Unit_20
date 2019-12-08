@@ -105,28 +105,59 @@ document.querySelector('.i-8').onkeypress = t8;
 // Task 9 ============================================
 /* Дан input .i-9. Напишите функцию t9, выводит в .out-9 количество нажатых клавиш стрелка вниз. */
 
-function t9() {
-
+let numPress = 0;
+function t9(e) {
+    if (e.keyCode == 40) {
+        numPress++;
+        document.querySelector('.out-9').innerHTML = numPress;
+    }
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-9').onkeyup = t9;
+
 
 
 // Task 10 ============================================
 /*  Дан input .i-10 и изображение 1.png. Добавьте событие на input, при нажатии клавиш стрелка вправо и стрелка влево увеличивать ширину изображения. Клавиши стрелка вверх и вниз - увеличивать высоту изображения. Одно нажатие клавиши - 1px. */
 
-function t10() {
+let w10 = 75;
+let h10 = 75;
 
+function t10(e) {
+    if (e.keyCode == 40 || e.keyCode == 38) {
+        console.log(e.keyCode);
+        h10++;
+        document.querySelector('.block').style.height = h10 + 'px';
+        document.querySelector('.block img').style.height = h10 + 'px';
+    }
+    else if (e.keyCode == 37 || e.keyCode == 39) {
+        console.log(e.keyCode);
+        w10++;
+        document.querySelector('.block').style.width = w10 + 'px';
+        document.querySelector('.block img').style.width = w10 + 'px';
+    }
 }
 
-// ваше событие здесь!!!
+document.querySelector('.i-10').onkeydown = t10;
 
 // Task 11 ============================================
 /*  Проект. Дан input .i-11. Используя знания html и css нарисуйте клавиатуру (можно схематически). Изображение должно содержать числа, символьные клавиши, пробел, enter, caps lock, shift, tab, alt. При вводе текста в input в момент нажатия клавиши - затемняйте ее, в момент отпускания - возвращайте к первоначальному состоянию. Аналогично при нажатии enter, space, alt, shift, ctrl. Затемнение реализуйте через добавление класса CSS. Для удобства рекомендую каждой клавише добавить атрибут data с символом. Если нажата клавиша caps lock - то присвоить ей затемнение, которое работает до последующего отжатия клавиши. */
 
-function t11() {
-
+function t11_down(event) {
+    if (event.code == 'CapsLock') {
+        document.querySelector('.capslock').classList.toggle('activeCapsLock');
+    }
+    else {
+        document.querySelector('.key[data="' + event.code + '"]').classList.add('active');
+    }
 }
 
-// ваше событие здесь!!!
+function t11_up(event) {
+    document.querySelectorAll('.key').forEach(function (element) {
+        element.classList.remove('active');
+    });
+}
+
+document.querySelector('.i-11').onkeydown = t11_down;
+document.querySelector('.i-11').onkeyup = t11_up;
 
